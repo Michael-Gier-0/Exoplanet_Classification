@@ -1,93 +1,72 @@
-Kepler Exoplanet Candidate Classification
+# Kepler Exoplanet Candidate Classification
 
-Overview
-
+## Overview
 The Kepler Space Telescope was designed to discover Earth-sized exoplanets by monitoring stars for periodic dips in brightness, caused by celestial objects passing in front of them. This dataset contains candidates observed by Kepler, along with their classification (exoplanet or false positive).
 The goal of the project is to develop a classification model to predict whether candidates identified by the Kepler Space Telescope are confirmed exoplanets or false positives.
 
-Instructions
-1. Setup
+---
 
-	•	Ensure Python 3.x is installed on your system.
+## Instructions
 
-	•	Install the required libraries:
+### Setup
+1. Ensure **Python 3.x** is installed on your system.
+2. Install the required libraries:
+   ```bash
+   pip install numpy pandas scikit-learn matplotlib
 
-        pip install numpy pandas scikit-learn matplotlib
-
-2. Navigation
-
-	•	Navigate to Exoplanet_Classification_Project:
+### Navigation
+1. Navigate to Exoplanet_Classification_Project:
 
         cd path/to/Exoplanet_Classification_Project
 
-3. Execution
-
-	•	Run the script:
+### Execution
+1. Run the script:
 
         python main.py
 
 
-Key Steps
+## Key Steps
 
-1.	Data Wrangling: Importing the data, dropping rows with null values or duplicates, creating a PCA-transformed version of the data, standardizing, and partitioning
+### Data Wrangling: 
+Importing the data, dropping rows with null values or duplicates, creating a PCA-transformed version of the data, standardizing, and partitioning
  
-2. 	Model Training and Selection:
- 
-	  ◦	Using Randomized Search to identify optimal models (with their hyper-parameters) for both non-PCA-transformed and PCA-transformed data.
+### Model Training and Selection:
+Using Randomized Search to identify optimal models (with their hyperparameters) for both non-PCA-transformed and PCA-transformed data. Comparing the two models and selecting the best-performing.
    
-	  ◦	Comparing the two models and selecting the best-performing.
-   
-3.  Hyper-parameter Tuning: Using Grid Search to select the optimal hyper-parameters of the selected model.
+### Hyper-parameter Tuning: 
+Using Grid Search to select the optimal hyperparameters of the selected model.
  
-4. 	Model Evaluation:
- 
-	  ◦	Training the final optimized model using the best hyper-parameters.
- 
-	  ◦	Generating a confusion matrix and a classification report to analyze the model's performance.
+### Model Evaluation:
+Training the final optimized model using the best hyperparameters. Generating a confusion matrix and a classification report to analyze the model's performance.
 
-Key Features
+## Key Features
 
-Models Evaluated:
+### Models Evaluated:
+1. Logistic Regression
 
-- Logistic Regression
-
-- K-Nearest Neighbors (KNN)
-
-  ◦	Hyper-parameters:
-  
-	 ▪	n_neighbors (1 to 1.5 × (number of training samples)^0.5)
+2. K-Nearest Neighbors (KNN)
+- Hyperparameters:
+	- n_neighbors: 1 to 1.5 × (number of 			training samples)^0.5
        
-- Decision Tree Classifier
+3. Decision Tree Classifier
+- Hyperparameters:
+	- criterion: 'entropy' or 'gini'
+   	- max_depth: 3 to 15
+   	- min_samples_leaf: 1 to 10
 
-  ◦	Hyperparameters:
+4. Support Vector Classifier (SVC)
+- Hyperparameters:
+	- kernel: radial basis function
+	- C: [0.1, 1, 10, 100]
+	- gamma: [0.1, 1, 10]
 
-    ▪	criterion: 'entropy' or 'gini'
-  
-    ▪	 max_depth: 3 to 15
-
-    ▪	 min_samples_leaf: 1 to 10
-  
-- Support Vector Classifier (SVC)
-
-  ◦	Hyperparameters:
-
-    ▪	kernel: radial basis function
-
-    ▪	C: [0.1, 1, 10, 100]
-
-    ▪	gamma: [0.1, 1, 10]
-
-Outputs:
+### Outputs:
 
 - Confusion Matrix:
-    
-  ◦	A visual representation of the model’s performance across true positive, true negative, false positive, and false negative classifications.
-	  
-  ◦	Saved as Exoplanet_confusion_matrix.png.
+	- A visual representation of the model’s performance 	across true positive, true negative, false positive, 	and false negative classifications.
+	- Saved as Exoplanet_confusion_matrix.png.
 
 - Classification Report:
-
-  ◦	Displays key metrics like precision, recall, and F1-score for each class.
-
-  ◦	Printed in Terminal
+	- Displays key metrics like precision, recall, and 	F1-score for each class.
+	- Printed in Terminal
 
